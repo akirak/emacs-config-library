@@ -1,0 +1,8 @@
+# -*- eval: (add-hook 'after-save-hook 'yankpad-reload t t) -*-
+#+title: Yankpad Snippets
+* Developing an Emacs package
+** Public Emacs package check list
+- [ ] Create a GitHub repository
+- [ ] Add a CI and make it green
+- [ ] Publish it to MELPA
+- [ ] Announce it on Reddit
