@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: use-package (with straight)
+# key: usep
+# --
+(use-package ${1:name}
+    :straight ($1 :host github :repo "${2:author}/${3:$1}")
+    $0)

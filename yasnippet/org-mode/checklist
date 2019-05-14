@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: check list item
+# key: ci
+# --
+- [ ] $0

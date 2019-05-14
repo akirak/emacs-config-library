@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: user
+# key: us
+# --
+USER $0

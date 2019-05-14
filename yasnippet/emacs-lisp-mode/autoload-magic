@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: autoload magic comment
+# key: magic
+# --
+;;;###autoload

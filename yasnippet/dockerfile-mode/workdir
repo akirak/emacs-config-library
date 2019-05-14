@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: workdir
+# key: wk
+# --
+WORKDIR $0
