@@ -1,0 +1,16 @@
+* Miscellaneous Configuration Files for Emacs
+This is my =no-littering-etc-directory= of [[https://github.com/emacscollective/no-littering][no-littering]] package. It currently contains my additional snippets. For some reasons, I don't want to put my snippets in [[https://github.com/akirak/emacs.d][my Emacs configuration repository]], and I don't like the fact that no-littering automatically creates directories inside the repository, so I created a separate repository.
+** Installation
+Clone this repository to somewhere:
+
+#+begin_src shell
+mkdir -p ~/lib
+git clone https://github.com/akirak/emacs-config-library.git ~/lib/emacs
+#+end_src
+
+Set =no-littering-etc-directory= before =no-littering= package is loaded:
+
+#+begin_src emacs-lisp
+  (setq no-littering-etc-directory "~/lib/emacs")
+  (use-package no-littering)
+#+end_src
