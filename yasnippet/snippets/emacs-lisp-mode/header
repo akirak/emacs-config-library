@@ -5,7 +5,7 @@
 ;; Copyright (C) `(format-time-string "%Y")` `(magit-git-string "config" "user.name")`
 
 ;; Author: `(magit-git-string "config" "user.name")` <`(magit-git-string "config" "user.email")`>
-;; Version: 1.0-pre
+;; Version: 0.1
 ;; Package-Requires: ((emacs "${1:25.1}")${2:extra-deps})
 ;; Keywords: 
 ;; URL: https://github.com/${3:repo}
