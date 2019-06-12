@@ -72,6 +72,22 @@ Skips capture tasks, projects, and subprojects."
 
 (setq-default org-clock-in-switch-to-state #'akirak/clock-in-to-next)
 
+;;;; Commonplace book
+(org-starter-define-file "cpb.org"
+  :key "c"
+  :refile (org-starter-extras-def-reverse-datetree-refile "cpb.org"
+            '("CREATED_TIME" "CREATED_AT" "CLOSED")))
+
+(org-starter-def-capture "c" "cpb.org: Plain entry"
+  entry (file+function "cpb.org" org-reverse-datetree-goto-date-in-file)
+  "* %^{Heading}
+:PROPERTIES:
+:CREATED_TIME: %U
+:END:
+
+%(unless (string-empty-p \"%i\") \"%i\n\n\")%?"
+  :clock-in t :clock-resume t :empty-lines 1)
+
 ;;;; Org files for work
 
 (org-starter-def "admin.org"
