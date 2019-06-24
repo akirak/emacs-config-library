@@ -88,6 +88,17 @@ Skips capture tasks, projects, and subprojects."
 %(unless (string-empty-p \"%i\") \"%i\n\n\")%?"
   :clock-in t :clock-resume t :empty-lines 1)
 
+(org-starter-add-agenda-custom-command
+    "c" "Browse entries in cpb.org"
+  (lambda (_)
+    (org-ql-agenda (org-starter-locate-file "cpb.org" nil t)
+      (level 4)
+      :sort priority))
+  ""
+  '((org-super-agenda-groups
+     '((:todo "DONE")
+       (:todo t)))))
+
 ;;;; Org files for work
 
 (org-starter-def "admin.org"
@@ -294,16 +305,3 @@ Skips capture tasks, projects, and subprojects."
                    (-sort #'string<
                           (--map (string-remove-suffix "-mode" (symbol-name it))
                                  (akirak/major-mode-list)))))
-
-;;;; Agenda
-
-(org-starter-add-agenda-custom-command
-    "c" "Browse entries in cpb.org"
-  (lambda (_)
-    (org-ql-agenda (org-starter-locate-file "cpb.org" nil t)
-      (level 4)
-      :sort priority))
-  ""
-  '((org-super-agenda-groups
-     '((:todo "DONE")
-       (:todo t)))))
