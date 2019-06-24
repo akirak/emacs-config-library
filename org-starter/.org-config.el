@@ -72,7 +72,9 @@ Skips capture tasks, projects, and subprojects."
 
 (setq-default org-clock-in-switch-to-state #'akirak/clock-in-to-next)
 
-;;;; Commonplace book
+;;;; Files
+
+;;;;; Commonplace book
 (org-starter-define-file "cpb.org"
   :key "c"
   :refile (org-starter-extras-def-reverse-datetree-refile "cpb.org"
@@ -99,7 +101,7 @@ Skips capture tasks, projects, and subprojects."
      '((:todo "DONE")
        (:todo t)))))
 
-;;;; Org files for work
+;;;;; Org files for work
 
 (org-starter-def "admin.org"
   :key "a"
@@ -109,7 +111,8 @@ Skips capture tasks, projects, and subprojects."
 (org-starter-def "devlog.org"
   :key "d")
 
-;;;; Capturing into the clocked task
+;;;; Org-Capture
+;;;;; Capturing into the clocked task
 
 ;; Inspired by http://www.howardism.org/Technical/Emacs/capturing-content.html
 
