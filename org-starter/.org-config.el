@@ -101,15 +101,34 @@ Skips capture tasks, projects, and subprojects."
      '((:todo "DONE")
        (:todo t)))))
 
-;;;;; Org files for work
+;;;;; Local files
+;; To avoid synchronization conflicts, I add new entries to this file
+;; and usually not to other files when I am on my phone.
+;; When I am on my computer, I refile entries in this file to other
+;; permanent files.
 
-(org-starter-def "admin.org"
-  :key "a"
+(org-starter-def "inbox-phone.org"
+  :agenda t)
+
+(org-starter-def "inbox-tablet.org"
+  :agenda t)
+
+;;;;; Other personal Org files
+
+(org-starter-def "devel.org"
+  :key "d"
   :agenda t
-  :refile nil)
+  :refile (:maxlevel . 3))
 
-(org-starter-def "devlog.org"
-  :key "d")
+(org-starter-def "learning.org"
+  :key "l"
+  :agenda t
+  :refile (:maxlevel . 5))
+
+(org-starter-def "references.org"
+  :key "r"
+  :agenda t
+  :refile (:maxlevel . 9))
 
 ;;;; Org-Capture
 ;;;;; Capturing into the clocked task
