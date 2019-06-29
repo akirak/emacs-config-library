@@ -135,44 +135,49 @@ Skips capture tasks, projects, and subprojects."
 
 ;; Inspired by http://www.howardism.org/Technical/Emacs/capturing-content.html
 
-;;;;; Plain content
-(org-starter-def-capture "p" "Plain content to the clock"
+;;;;;; Plain content
+(org-starter-def-capture "a" "Current clock")
+
+(add-to-list 'org-capture-templates-contexts
+             '("a" ((lambda () (org-clocking-p)))))
+
+(org-starter-def-capture "ap" "Plain content"
   plain (clock)
   "%?%i" :unnarrowed t :empty-lines 1 :no-save t)
 
-(org-starter-def-capture "P" "Plain content to the clock (immediate finish)"
+(org-starter-def-capture "aP" "Plain content (immediate finish)"
   plain (clock)
   "%i" :immediate-finish t :empty-lines 1 :no-save t)
 
 (defsubst akirak/org-capture-plain (&rest paragraphs)
   (org-capture-string (mapconcat #'identity (delq nil paragraphs)
                                  "\n\n")
-                      "P"))
+                      "aP"))
 
 (defsubst akirak/org-capture-plain-popup (&rest paragraphs)
   (org-capture-string (concat "  "
                               (mapconcat #'identity (delq nil paragraphs)
                                          "\n\n"))
-                      "p"))
+                      "ap"))
 
-;;;;; Item
-(org-starter-def-capture "i" "Item to the clock"
+;;;;;; Item
+(org-starter-def-capture "ai" "List item"
   item (clock)
   "%?"  :no-save t :unnarrowed t)
 
-(org-starter-def-capture "I" "Item to the clock (immediate finish)"
+(org-starter-def-capture "aI" "List item (immediate finish)"
   item (clock)
   "%i" :immediate-finish t :no-save t)
 
 (defsubst akirak/org-capture-item (input)
-  (org-capture-string input "I"))
+  (org-capture-string input "aI"))
 
-(org-starter-def-capture "b" "Check item to the clock"
+(org-starter-def-capture "ab" "Lite item with checkbox"
   checkitem (clock)
   "[ ] %?"  :no-save t :unnarrowed t)
 
-;;;;; Child entries
-(org-starter-def-capture "n" "Subtree"
+;;;;;; Child entries
+(org-starter-def-capture "as" "Subtree"
   entry (clock)
   "* %^{Title}
 :PROPERTIES:
@@ -181,7 +186,7 @@ Skips capture tasks, projects, and subprojects."
 %?"
   :clock-in t :clock-resume t :no-save t :empty-lines 1)
 
-(org-starter-def-capture "N" "Subtree (immediate finish, clock-in)"
+(org-starter-def-capture "aS" "Subtree (immediate finish, clock-in)"
   entry (clock)
   "* ^{Title}
 :PROPERTIES:
@@ -189,14 +194,14 @@ Skips capture tasks, projects, and subprojects."
 :END:"
   :clock-in t :immediate-finish t :no-save t :empty-lines 1)
 
-(org-starter-def-capture "H" "Heading"
+(org-starter-def-capture "aH" "Heading (immediate finish, clock-in)"
   entry (clock)
   "* %i"
   :clock-in t :immediate-finish t :no-save t)
 
-;;;;; Interactive functions
+;;;;;; Interactive functions
 
-;;;;;; Blocks
+;;;;;;; Blocks
 
 ;;;###autoload
 (defun akirak/org-capture-selected-source (description with-link)
@@ -205,7 +210,7 @@ Skips capture tasks, projects, and subprojects."
                      (equal current-prefix-arg '(16))))
   (akirak/org-capture-plain description
                             (akirak/org-capture-wrap-selection "SRC"
-                                                               (string-remove-suffix "-mode" (symbol-name major-mode)))
+                              (string-remove-suffix "-mode" (symbol-name major-mode)))
                             (when with-link
                               (concat "From "
                                       (akirak/location-as-org-link (akirak/describe-location-in-source))))))
