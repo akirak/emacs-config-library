@@ -156,6 +156,30 @@ Skips capture tasks, projects, and subprojects."
   :clock-in t :clock-resume t :empty-lines 1)
 
 ;;;; Org-Capture
+;;;;; Generic capture template
+(org-starter-def-capture "/" "Subtree in a file"
+  entry (function (lambda () (org-refile '(4))))
+  "* %^{Heading}
+:PROPERTIES:
+:CREATED_TIME: %U
+:END:
+
+%(unless (string-empty-p \"%i\") \"%i\n\n\")%?"
+  :clock-in t :clock-resume t :empty-lines 1)
+
+(org-starter-def-capture "?" "Subtree in this file"
+  entry (function (lambda () (counsel-org-goto)))
+  "* %^{Heading}
+:PROPERTIES:
+:CREATED_TIME: %U
+:END:
+
+%(unless (string-empty-p \"%i\") \"%i\n\n\")%?"
+  :clock-in t :clock-resume t :empty-lines 1)
+
+(add-to-list 'org-capture-templates-contexts
+             '(("?" ((in-mode . org-mode)))))
+
 ;;;;; Capturing into the clocked task
 
 ;; Inspired by http://www.howardism.org/Technical/Emacs/capturing-content.html
