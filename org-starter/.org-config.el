@@ -130,6 +130,31 @@ Skips capture tasks, projects, and subprojects."
   :agenda t
   :refile (:maxlevel . 9))
 
+(org-starter-def "devlog.org"
+  :key "g"
+  :agenda nil
+  :local-variables
+  ((org-reverse-datetree-level-formats
+    . '("%Y"
+        (lambda (time)
+          (format-time-string "%Y-%m %B"
+                              (org-reverse-datetree-monday time)))
+        "%Y W%W"
+        "%Y-%m-%d %A")))
+  :refile
+  (org-starter-extras-def-reverse-datetree-refile "devlog.org"
+    '("CREATED_TIME" "CREATED_AT" "CLOSED")))
+
+(org-starter-def-capture "d" "devlog.org: Plain entry"
+  entry (file+function "devlog.org" org-reverse-datetree-goto-date-in-file)
+  "* %^{Heading}
+:PROPERTIES:
+:CREATED_TIME: %U
+:END:
+
+%(unless (string-empty-p \"%i\") \"%i\n\n\")%?"
+  :clock-in t :clock-resume t :empty-lines 1)
+
 ;;;; Org-Capture
 ;;;;; Capturing into the clocked task
 
