@@ -113,6 +113,16 @@ Skips capture tasks, projects, and subprojects."
 (org-starter-def "inbox-tablet.org"
   :agenda t)
 
+;;;;; Journal (journal.org)
+
+(org-starter-def-capture "j" "Journal")
+
+(org-starter-define-file "journal.org"
+  :key "j"
+  :refile (org-starter-extras-def-reverse-datetree-refile "journal.org"
+            '("CLOSED" "CREATED_TIME" "CREATED_AT")
+            :ask-always t))
+
 ;;;;; Other personal Org files
 
 (org-starter-def "devel.org"
