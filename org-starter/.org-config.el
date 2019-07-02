@@ -130,17 +130,17 @@ Skips capture tasks, projects, and subprojects."
   :agenda t
   :refile (:maxlevel . 9))
 
-(org-starter-def "devlog.org"
+(org-starter-define-file "devlog.org"
   :key "g"
   :agenda nil
   :local-variables
-  ((org-reverse-datetree-level-formats
-    . '("%Y"
-        (lambda (time)
-          (format-time-string "%Y-%m %B"
-                              (org-reverse-datetree-monday time)))
-        "%Y W%W"
-        "%Y-%m-%d %A")))
+  '((org-reverse-datetree-level-formats
+     . '("%Y"
+         (lambda (time)
+           (format-time-string "%Y-%m %B"
+                               (org-reverse-datetree-monday time)))
+         "%Y W%W"
+         "%Y-%m-%d %A")))
   :refile
   (org-starter-extras-def-reverse-datetree-refile "devlog.org"
     '("CREATED_TIME" "CREATED_AT" "CLOSED")))
