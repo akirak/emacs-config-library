@@ -123,6 +123,10 @@ Skips capture tasks, projects, and subprojects."
             '("CLOSED" "CREATED_TIME" "CREATED_AT")
             :ask-always t))
 
+;;;;; Book keeping
+(org-starter-def "bookkeeping.bean"
+  :key "M")
+
 ;;;;; Other personal Org files
 
 (org-starter-def "devel.org"
