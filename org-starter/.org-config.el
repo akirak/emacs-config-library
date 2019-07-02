@@ -202,6 +202,11 @@ SCHEDULED: %^{When to do}t
   :key "o"
   :refile (:maxlevel . 3))
 
+(org-starter-def "buffer.org"
+  :key "b"
+  :agenda t
+  :refile (:level . 0))
+
 ;;;; Org-Capture
 ;;;;; Generic capture template
 (org-starter-def-capture "/" "Subtree in a file"
