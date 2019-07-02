@@ -198,6 +198,10 @@ SCHEDULED: %^{When to do}t
 %(unless (string-empty-p \"%i\") \"%i\n\n\")%?"
   :clock-in t :clock-resume t :empty-lines 1)
 
+(org-starter-def "overview.org"
+  :key "o"
+  :refile (:maxlevel . 3))
+
 ;;;; Org-Capture
 ;;;;; Generic capture template
 (org-starter-def-capture "/" "Subtree in a file"
