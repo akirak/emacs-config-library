@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: jest: expect
+# key: exp
+# --
+expect(${1:value}).${2:matcher}

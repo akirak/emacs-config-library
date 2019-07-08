@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: jest: afterEach
+# key: aftereach
+# --
+afterEach(() => {
+    $0
+})`(akirak/js-trailing-semicolon-if-desired)`

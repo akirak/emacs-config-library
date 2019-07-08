@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: js-mode quote character
+# key: quo
+# --
+\`akirak/js-preferred-quote\`

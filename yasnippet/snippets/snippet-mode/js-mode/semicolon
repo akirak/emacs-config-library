@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: js-mode semicolon
+# key: semi
+# --
+\`(akirak/js-trailing-semicolon-if-desired)\`
