@@ -158,6 +158,11 @@ SCHEDULED: %^{When to do}t
 
 ;;;;; Other personal Org files
 
+(org-starter-def "projects.org"
+  :key "p"
+  :agenda nil
+  :refile (:maxlevel . 4))
+
 (org-starter-def "devel.org"
   :key "d"
   :agenda t
