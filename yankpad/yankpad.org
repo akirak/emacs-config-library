@@ -6,3 +6,22 @@
 - [ ] Add a CI and make it green
 - [ ] Publish it to MELPA
 - [ ] Announce it on Reddit
+** Travis.yml for Emacs Packages                                       :src:
+#+begin_src yml
+language: nix
+
+script:
+  - nix-build -A byte-compile --no-out-link --quiet
+  - nix-build -A checkdoc --no-out-link --quiet
+  - nix-shell -A package-lint --pure --quiet
+
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+
+cache:
+  directories:
+    - /nix/store
+    - /dev/shm/package-lint
+#+end_src
