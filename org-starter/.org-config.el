@@ -357,7 +357,7 @@ SCHEDULED: %^{When to do}t
    (format "\n\n#+BEGIN_SRC %s\n%s\n#+END_SRC" lang text)
    (concat "From " (org-web-tools--org-link-for-url url))
    (akirak/org-capture-wrap-selection "SRC"
-                                      (string-remove-suffix "-mode" (symbol-name major-mode)))
+     (string-remove-suffix "-mode" (symbol-name major-mode)))
    (when with-link
      (concat "From "
              (akirak/location-as-org-link (akirak/describe-location-in-source))
