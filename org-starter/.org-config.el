@@ -346,6 +346,8 @@ SCHEDULED: %^{When to do}t
 
 ;;;;; Clipboard
 
+(org-starter-def-capture "b" "Bookmark")
+
 ;;;###autoload
 (defun akirak/org-capture-clipboard-as-source (text lang url)
   (interactive (list (if current-prefix-arg
