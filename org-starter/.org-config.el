@@ -204,18 +204,34 @@ SCHEDULED: %^{When to do}t
 %(unless (string-empty-p \"%i\") \"%i\n\n\")%?"
   :clock-in t :clock-resume t :empty-lines 1)
 
-(org-starter-def-capture "?" "Subtree in this file"
-  entry (function (lambda () (counsel-org-goto)))
-  "* %^{Heading}
+(org-starter-def-capture "'" "Avy target")
+
+(defun akirak/avy-org-heading ()
+  (avy-jump (rx bol (1+ "*") (1+ space))))
+
+(org-starter-def-capture "'t" "Todo entry"
+  entry (function akirak/avy-org-heading)
+  "* TODO %?
 :PROPERTIES:
 :CREATED_TIME: %U
 :END:
+" :empty-lines 1)
 
-%(unless (string-empty-p \"%i\") \"%i\n\n\")%?"
-  :clock-in t :clock-resume t :empty-lines 1)
+(org-starter-def-capture "'d" "Heading with timestamp"
+  entry (function akirak/avy-org-heading)
+  "* %?
+:PROPERTIES:
+:CREATED_TIME: %U
+:END:
+")
 
-(add-to-list 'org-capture-templates-contexts
-             '(("?" ((in-mode . org-mode)))))
+(org-starter-def-capture "'h" "Heading without timestamp"
+  entry (function akirak/avy-org-heading)
+  "* %?")
+
+(org-starter-def-capture "'i" "Item"
+  item (function akirak/avy-org-heading)
+  "- %?")
 
 ;;;;; Capturing into the clocked task
 
