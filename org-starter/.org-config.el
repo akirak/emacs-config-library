@@ -192,6 +192,9 @@ SCHEDULED: %^{When to do}t
   :agenda t
   :refile (:level . 0))
 
+(org-starter-def "posts-ja.org"
+  :key "q")
+
 ;;;; Org-Capture
 ;;;;; Generic capture template
 (org-starter-def-capture "/" "Subtree in a file"
