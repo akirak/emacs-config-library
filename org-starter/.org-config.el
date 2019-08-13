@@ -185,6 +185,7 @@ SCHEDULED: %^{When to do}t
 
 (org-starter-def "setup.org"
   :key "s"
+  :custom-vars org-offtime-file
   :refile (:maxlevel . 3))
 
 (org-starter-def "posts-ja.org"
