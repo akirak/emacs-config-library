@@ -183,14 +183,9 @@ SCHEDULED: %^{When to do}t
 %(unless (string-empty-p \"%i\") \"%i\n\n\")%?"
   :clock-in t :clock-resume t :empty-lines 1)
 
-(org-starter-def "overview.org"
-  :key "o"
+(org-starter-def "setup.org"
+  :key "s"
   :refile (:maxlevel . 3))
-
-(org-starter-def "buffer.org"
-  :key "b"
-  :agenda t
-  :refile (:level . 0))
 
 (org-starter-def "posts-ja.org"
   :key "q")
