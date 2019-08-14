@@ -107,14 +107,14 @@ Skips capture tasks, projects, and subprojects."
 (org-starter-def "bookkeeping.bean"
   :key "M")
 
-;;;;; Tasks (taskpool.org)
-(org-starter-def "taskpool.org"
+;;;;; Tasks
+(org-starter-def "admin.org"
   :key "t"
   :agenda t
   :refile (:maxlevel . 3))
 
 (org-starter-def-capture "t" "Scheduled task"
-  entry (file "taskpool.org")
+  entry (file "admin.org")
   "* TODO %^{Heading}
 SCHEDULED: %^{When to do}t
 :PROPERTIES:
@@ -126,7 +126,7 @@ SCHEDULED: %^{When to do}t
   :clock-in t :clock-resume t :empty-lines 1)
 
 (org-starter-def-capture "u" "Urgent task"
-  entry (file "taskpool.org")
+  entry (file "admin.org")
   "* STARTED %^{Heading} %t
 :PROPERTIES:
 :CREATED_TIME: %U
