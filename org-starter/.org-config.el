@@ -183,11 +183,6 @@ SCHEDULED: %^{When to do}t
 %(unless (string-empty-p \"%i\") \"%i\n\n\")%?"
   :clock-in t :clock-resume t :empty-lines 1)
 
-(org-starter-def "setup.org"
-  :key "s"
-  :custom-vars org-offtime-file
-  :refile (:maxlevel . 3))
-
 (org-starter-def "posts-ja.org"
   :key "q")
 
