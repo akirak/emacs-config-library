@@ -1,12 +1,5 @@
 ;;;; Todo states
 
-;; (defun akirak//org-todo-keyword-names ()
-;;   (cl-loop for (type . group) in org-todo-keywords
-;;            when (eq type 'sequence)
-;;            append (cl-loop for spec in group
-;;                            unless (equal spec "|")
-;;                            collect (replace-regexp-in-string "(.+)$" "" spec))))
-
 (setq-default org-todo-keywords
               '((sequence
                  "TODO(t)"
