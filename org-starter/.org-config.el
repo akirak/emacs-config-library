@@ -18,11 +18,8 @@
                  "ARCHIVED(a@/!)")
                 (sequence
                  "MAYBE(m@)"
-                 "WAITING(w@/!)"
-                 "|")
-                (type
-                 "TO_BLOG(l)"
-                 "HABIT(h)")))
+                 "STOPPED(p!)"
+                 "WAITING(w@/!)")))
 
 (setq-default org-todo-state-tags-triggers
               (append '(("ARCHIVED" ("ARCHIVE" . t)))))
@@ -38,6 +35,7 @@
         ("DONE" . (:foreground "ForestGreen"))
         ("ARCHIVED" . (:foreground "DarkGrey" :underline t))
         ;; Inactive states
+        ("STOPPED" . (:foreground "DarkRed" :underline t))
         ("WAITING" . (:foreground "MediumPurple2" :weight bold :underline t))
         ("MAYBE" . (:foreground "LimeGreen" :underline t))))
 
