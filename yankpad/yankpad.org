@@ -25,3 +25,22 @@ cache:
     - /nix/store
     - /dev/shm/package-lint
 #+end_src
+* Syncthing
+** .gitignore for Syncthing repositories                               :src:
+#+begin_src conf
+.stfolder
+.stversions
+*.sync-conflict-*.org
+log
+.org-id-locations
+\#*
+\.\#*
+
+# Big directories
+.vagrant
+node_modules
+#+end_src
+** .stignore                                                           :src:
+#+begin_src conf
+.git
+#+end_src
