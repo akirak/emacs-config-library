@@ -43,6 +43,12 @@ Skips capture tasks, projects, and subprojects."
 
 (setq-default org-clock-in-switch-to-state #'akirak/clock-in-to-next)
 
+;;;; Org files in this repositories
+;;;;; yankpad.org
+(org-starter-define-file (expand-file-name "yankpad/yankpad.org" no-littering-etc-directory)
+  :key "y"
+  :custom-vars 'yankpad-file)
+
 ;;;; Org-Capture
 ;;;;; Generic capture template
 (org-starter-def-capture "/" "Subtree in a file"
