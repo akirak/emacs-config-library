@@ -11,7 +11,7 @@
                  "ARCHIVED(a@/!)")
                 (sequence
                  "MAYBE(m@)"
-                 "STOPPED(p!)"
+                 "STOPPED(p@)"
                  "WAITING(w@/!)")))
 
 (setq-default org-todo-state-tags-triggers
