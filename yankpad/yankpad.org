@@ -44,3 +44,12 @@ node_modules
 #+begin_src conf
 .git
 #+end_src
+* Emacs configuration
+** Simple require
+#+begin_src emacs-lisp
+  (akirak/require '${0:module})
+#+end_src
+** Empty source block                                                :key:s:
+#+begin_src emacs-lisp
+$0
+#+end_src
