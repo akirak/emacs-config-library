@@ -53,3 +53,7 @@ node_modules
 #+begin_src emacs-lisp
 $0
 #+end_src
+** use-package with custom recipe (straight.el)
+(use-package ${1:name}
+  :straight (:host ${2:github} :repo "${3:repo}")
+  $0)
