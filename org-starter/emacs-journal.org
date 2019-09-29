@@ -1,0 +1,10 @@
+#+title: Emacs Journal
+* 2019-09
+** 2019-09-29
+*** Hello
+:PROPERTIES:
+:CREATED_TIME: [2019-09-29 Sun 15:57]
+:END:
+
+This is the first post on my Emacs journal.
+I will check how it is rendered on GitHub.
