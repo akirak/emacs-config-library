@@ -1,7 +1,9 @@
 #+title: Emacs Journal
-* 2019-09
-** 2019-09-29
-*** Hello
+* 2019
+** 2019-09 September
+*** 2019 W38
+**** 2019-09-29 Sunday
+***** Hello
 :PROPERTIES:
 :CREATED_TIME: [2019-09-29 Sun 15:57]
 :END:
