@@ -49,6 +49,28 @@ Skips capture tasks, projects, and subprojects."
   :key "y"
   :custom-vars 'yankpad-file)
 
+;;;;; emacs-journal.org
+(org-starter-define-file "emacs-journal.org"
+  :key "e"
+  :refile
+  (org-starter-extras-def-reverse-datetree-refile "emacs-journal.org"
+    '("CREATED_TIME" "CREATED_AT" "CLOSED"))
+  :local-variables
+  '((org-reverse-datetree-level-formats
+     . ("%Y"
+        (lambda (time)
+          (format-time-string "%Y-%m %B"
+                              (org-reverse-datetree-monday time)))
+        "%Y W%W"
+        "%Y-%m-%d %A"))))
+
+(org-starter-def-capture "je" "Emacs Journal"
+  entry (file+function "emacs-journal.org" org-reverse-datetree-goto-date-in-file)
+  "* %^{Heading}
+:PROPERTIES:
+:CREATED_TIME: %U
+:END:")
+
 ;;;; Org-Capture
 ;;;;; Generic capture template
 (org-starter-def-capture "/" "Subtree in a file"
