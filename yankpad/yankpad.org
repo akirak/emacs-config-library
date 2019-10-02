@@ -57,3 +57,15 @@ $0
 (use-package ${1:name}
   :straight (:host ${2:github} :repo "${3:repo}")
   $0)
+* Vue.js
+** Basic single-file component in Vue.js (JavaScript version)
+<template>
+  <div>
+    TODO
+  </div>
+</template>
+
+<script>
+export default {
+};
+</script>
