@@ -51,7 +51,7 @@ Skips capture tasks, projects, and subprojects."
 
 ;;;;; emacs-journal.org
 (org-starter-define-file "emacs-journal.org"
-  :key "e"
+  :key "E"
   :refile
   (org-starter-extras-def-reverse-datetree-refile "emacs-journal.org"
     '("CREATED_TIME" "CREATED_AT" "CLOSED"))
