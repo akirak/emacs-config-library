@@ -5,7 +5,7 @@
 
 * 2019-09
 ** 2019-10-05 Saturday
-*** DONE Ivy-omni-org to support org-ql-view :Emacs:ivy_omni_org:org_ql:announcement:Org__mode:
+*** DONE Ivy-omni-org to Support Org-ql-view :Emacs:ivy_omni_org:org_ql:announcement:Org__mode:
 CLOSED: [2019-10-05 Sat 22:36]
 :PROPERTIES:
 :CREATED_TIME: [2019-10-05 Sat 21:32]
