@@ -1,5 +1,58 @@
 #+title: Emacs Journal
+#+HUGO_SECTION: post
+#+HUGO_BASE_DIR: ~/arts/github/jingsi-space-blog/
+#+author: Akira Komamura
+
 * 2019-09
+** 2019-10-05 Saturday
+*** DONE Ivy-omni-org to support org-ql-view :Emacs:ivy_omni_org:org_ql:announcement:Org__mode:
+CLOSED: [2019-10-05 Sat 22:36]
+:PROPERTIES:
+:CREATED_TIME: [2019-10-05 Sat 21:32]
+:EXPORT_FILE_NAME: ivy-omni-org-to-integrate-with-org-ql-view.md
+:EXPORT_HUGO_SLUG: ivy-omni-org-to-support-org-ql-view
+:EXPORT_HUGO_CATEGORIES: "My Emacs packages"
+:ID:       9d975aa0-ba66-4077-af60-7a4eddc54754
+:END:
+
+I am currently working on a feature for [[https://github.com/akirak/ivy-omni-org/][ivy-omni-org]] package to integrate with [[https://github.com/alphapapa/org-ql][org-ql]] package by alphapapa.
+
+Ivy-omni-org is an [[https://github.com/abo-abo/swiper][Ivy]] interface which lets you choose an item from various sources on Org mode.
+It currently supports the following content types:
+
+- Org buffers
+- Org files
+- Org bookmarks
+- Custom Org agenda commands
+
+It also allows you to open a buffer/file/bookmark in another window/frame rather than in the current window by selecting an alternative action available from ~M-o~ key.
+
+Org-ql is a library for searching Org entries with a query language based on S (lisp) expressions.
+It also provides an alternative to =org-agenda= which lets you define agenda voews with the query language, and
+=org-ql-view= library lets you manage bookmarks of such agenda views, like =org-agenda-custom-commands=.
+=org-ql-view= is no more capable than =org-agenda=, but the query language is more intuitive to use than the string-based match expression syntax of =org-agenda=.
+
+The new feature for =ivy-omni-org= lets you choose an agenda view of =org-ql-view=.
+Since =org-ql-view= is an easier alternative to =org-agenda-custom-commands=, =ivy-omni-org= should provide an integration with the feature, so I implemented it.
+
+[[https://raw.githubusercontent.com/akirak/emacs-config-library/screenshots/ivy-omni-org-with-org-ql-views.png]]
+
+Actually, the upcoming feature is more generic: It allows you to define custom content types defined in terms of functions, and the integration with =org-ql-view= will be included in the package as an example of the customization.
+
+The feature is not available in the master branch yet (nor from [[https://melpa.org/#/][MELPA]]) but in [[https://github.com/akirak/ivy-omni-org/tree/custom-types][this feature branch]].
+Note that you can reorder the sections in =ivy-omni-org= by customizing =ivy-omni-org-content-types= to your liking.
+The following is my current setup:
+
+#+begin_src emacs-lisp
+  (use-package ivy-omni-org
+    :custom
+    (ivy-omni-org-content-types '(agenda-commands
+                                  org-ql-views
+                                  buffers
+                                  files
+                                  bookmarks)))
+#+end_src
+
 ** 2019-09-29 Sunday
 *** Hello
 :PROPERTIES:
