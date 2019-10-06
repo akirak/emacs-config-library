@@ -4,7 +4,7 @@
 #+author: Akira Komamura
 * 2019-10
 ** 2019-10-07 Monday
-*** Bold.el
+*** Bold.el                    :Emacs:bold_el:new__package:LSP:programming:
 :PROPERTIES:
 :CREATED_TIME: [2019-10-07 Mon 03:29]
 :END:
