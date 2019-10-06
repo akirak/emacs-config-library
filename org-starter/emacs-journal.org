@@ -2,7 +2,25 @@
 #+HUGO_SECTION: post
 #+HUGO_BASE_DIR: ~/arts/github/jingsi-space-blog/
 #+author: Akira Komamura
+* 2019-10
+** 2019-10-07 Monday
+*** Bold.el
+:PROPERTIES:
+:CREATED_TIME: [2019-10-07 Mon 03:29]
+:END:
 
+I've just created [[https://github.com/akirak/bold.el][bold.el]].
+It can be configured like [[https://github.com/akirak/emacs.d/blob/maint/setup/setup-bold.el#L1][this]].
+This is an attempt to provide a consistent set of keybindings across several programming languages by wrapping minor modes.
+
+Language Server Protocol is supposed to serve the purpose, looks promising, and is already doing a good job for several programming languages.
+However, in the Emacs world, =lsp-mode= is not the best solution for all languages.
+I like =tide-mode= for TypeScript and =dante-mode= for Haskell than their LSP equivalents.
+They provide partly the same features as =lsp-mode=, and I want to stick with the same keybindings whenever possible.
+That is why I need to develop this wrapper package.
+
+The package is all about muscle memory.
+It doesn't provide any features in itself.
 * 2019-09
 ** 2019-10-05 Saturday
 *** DONE Ivy-omni-org to Support Org-ql-view :Emacs:ivy_omni_org:org_ql:announcement:Org__mode:
