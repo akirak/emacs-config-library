@@ -21,7 +21,6 @@ That is why I need to develop this wrapper package.
 
 The package is all about muscle memory.
 It doesn't provide any features in itself.
-* 2019-09
 ** 2019-10-05 Saturday
 *** DONE Ivy-omni-org to Support Org-ql-view :Emacs:ivy_omni_org:org_ql:announcement:Org__mode:
 CLOSED: [2019-10-05 Sat 22:36]
@@ -71,6 +70,7 @@ The following is my current setup:
                                   bookmarks)))
 #+end_src
 
+* 2019-09
 ** 2019-09-29 Sunday
 *** Hello
 :PROPERTIES:
