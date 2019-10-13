@@ -3,6 +3,66 @@
 #+HUGO_BASE_DIR: ~/arts/github/jingsi-space-blog/
 #+author: Akira Komamura
 * 2019-10
+** 2019-10-13 Sunday
+*** Reading list implemented as an Org agenda :Org__mode:org_agenda:reading:org_starter:
+:PROPERTIES:
+:CREATED_TIME: [2019-10-13 Sun 18:44]
+:END:
+
+I am currently trying to implement a reading list in a form of custom Org agenda command.
+I have defined the command as follows, but it is subject to change:
+
+#+begin_src emacs-lisp
+  (defcustom akirak/org-reading-list-files
+    (--> (org-agenda-files)
+         ;; Add specific files
+         (append
+          (list
+           (org-starter-locate-file "cpb.org" nil t)
+           (org-starter-locate-file "learning.org" nil t))
+          it)
+         ;; Remove specific files
+         (-difference
+          it
+          (list
+           (org-starter-locate-file "setup.org" nil t)
+           (org-starter-locate-file "devel.org" nil t)
+           (org-starter-locate-file "admin.org" nil t)))
+         (delq nil it)
+         (cl-remove-duplicates it :test #'file-equal-p))
+    "List of Org files possibly containing reading items."
+    :type '(repeat file))
+
+  (org-starter-add-block-agenda-command "r" "Reading list and research topics"
+    `(org-ql-block '(tags "book" "@book" "reading" "@reading")
+                   ((org-agenda-sorting-strategy '(priority-down deadline-up))
+                    (org-super-agenda-groups
+                     '((:todo "STARTED")
+                       (:todo "NEXT")
+                       (:priority "A")
+                       (:todo "REVIEW")
+                       (:todo "STOPPED")
+                       (:name "Possibly not properly tagged. @reading is recommended"
+                              :not (:tag "@reading")
+                              :order -1)
+                       (:priority "C" :order -2)
+                       ;; TODO: Add your favourite categories here
+                       (:tag "favourite" :tag "favorite")))
+                    (org-agenda-files (list ,@akirak/org-reading-list-files)))))
+#+end_src
+
+My [[https://github.com/akirak/org-starter][org-starter]] package is used to define the agenda command, and I rely on =org-super-agenda= and =org-ql= packages by alphapapa.
+I use =org-starter= extensively for configuring Org mode.
+I must write tutorial posts on the package.
+
+I also plan on adding another section for tracking research topics.
+I am not a researcher, but topics/questions are a counterpart to sources in problem solving.
+It may be useful to display both types of information in the same view.
+
+While I was experimenting with this agenda command, I thought it would be convenient to let org-starter refresh the agenda buffer every time the agenda is redefined, so I implemented the feature: [[https://github.com/akirak/org-starter/compare/feature/refresh-agenda-buffer][feature/refresh-agenda-buffer]].
+When you evaluate the agenda definition to update the definition, it refreshes an existing agenda buffer.
+I will use this feature with a new =org-starter-override-agenda-window-setup= option set to =other-window=.
+** 2019-10-12 Saturday
 ** 2019-10-07 Monday
 *** Bold.el                    :Emacs:bold_el:new__package:LSP:programming:
 :PROPERTIES:
