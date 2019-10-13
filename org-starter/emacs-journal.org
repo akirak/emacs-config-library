@@ -25,6 +25,7 @@ I also have to reconfigure =org-protocol= which is a counterpart of this package
   }
 #+end_src
 
+#+RESULTS:
 [[file:static/org-entry-links.png]]
 
 ** 2019-10-13 Sunday
