@@ -16,7 +16,7 @@ With this package, I can use Org mode as a bookmark manager.
 
 I also have to reconfigure =org-protocol= which is a counterpart of this package:
 
-#+begin_src dot :file static/org-entry-links.png
+#+begin_src dot :file static/org-entry-links.png :exports results
   digraph G {
           browser [label="Web browser"];
           org [label="Org mode"];
