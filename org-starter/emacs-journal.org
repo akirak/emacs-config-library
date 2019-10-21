@@ -3,6 +3,42 @@
 #+HUGO_BASE_DIR: ~/arts/github/jingsi-space-blog/
 #+author: Akira Komamura
 * 2019-10
+** 2019-10-21 Monday
+*** DONE Editing Parentheses in Emacs                        :Emacs:coding:
+CLOSED: [2019-10-21 Mon 20:22]
+:PROPERTIES:
+:CREATED_TIME: [2019-10-21 Mon 18:30]
+:EXPORT_FILE_NAME: parentheses-in-emacs.md
+:EXPORT_HUGO_SLUG: parentheses-in-emacs
+:EXPORT_HUGO_CATEGORIES: "Emacs tips"
+:END:
+
+Before switching to Emacs, I had been using Vim.
+As I do in Emacs, I used to add a bunch of plugins to my =.vimrc=.
+
+One Vim plugin I miss in Emacs is [[https://github.com/tpope/vim-surround][surround]].
+As the name implies, it is a plugin for editing parentheses and brackets.
+I knew there existed Emacs packages for that purpose, but I did not think about how I want to do it until recently.
+
+After doing some research and trying out packages, I ended up with the following plan for editing parentheses[fn:2]:
+
+- To enclose an active region with a pair of parentheses, you can simply type ~(~ in most modes. This is supported by =electric-pair-mode=, =lispy-mode=, etc.
+- To add/delete/change brackets around the point, you can use [[https://github.com/cute-jumper/embrace.el][embrace]].
+  I bind ~M-i~ to =embrace-commander=, but I often forget using this command.
+- To edit contents inside the surrounding quotes/brackets, you can use =sp-change-enclosing= from [[https://github.com/Fuco1/smartparens][smartparens]].
+  I bind ~C-c e~ to this command[fn:1].
+
+You can also use [[https://github.com/magnars/expand-region.el][expand-region]] for killing text inside/with a bracket pair.
+
+Other options include [[https://github.com/casouri/isolate][isolate]] and [[https://github.com/tslilc/siege-mode][siege-mode]].
+I didn't choose those packages because the configuration described above would work for most cases.
+
+Note that this is not about editing lisp code in Emacs.
+I use [[https://github.com/abo-abo/lispy][lispy]] for that purpose.
+
+This workflow is still not as consistent as in =vim-surround=.
+I must admit that vim can be more efficient than Emacs in some situations for text editing, but I am using Emacs mostly because I need an application that is capable of everything.
+I want to know if there is a more elegant way to editing parentheses.
 ** 2019-10-14 Monday
 *** org-entry-links
 :PROPERTIES:
@@ -164,3 +200,8 @@ The following is my current setup:
 
 This is the first post on my Emacs journal.
 I will check how it is rendered on GitHub.
+
+* Footnotes
+
+[fn:2] I am not an evil user, so I did not consider any evil-based packages. 
+[fn:1] To use this command in minibuffers, you need to add =smartparens-mode= to =minibuffer-setup-hook=.
