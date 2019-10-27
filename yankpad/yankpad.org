@@ -26,8 +26,7 @@ cache:
     - /dev/shm/package-lint
 #+end_src
 * Syncthing
-** .gitignore for Syncthing repositories                               :src:
-#+begin_src conf
+** .gitignore for Syncthing repositories
 .stfolder
 .stversions
 *.sync-conflict-*.org
@@ -36,14 +35,48 @@ log
 \#*
 \.\#*
 
+# Binary files
+*.pyc
+*.o
+
 # Big directories
 .vagrant
 node_modules
-#+end_src
-** .stignore                                                           :src:
-#+begin_src conf
+__pycache__
+
+# Elixir
+deps
+_build
+** .stignore
+# Version control
 .git
-#+end_src
+
+# Temporary files created by Emacs
+\#*
+\.\#*
+*.lock
+
+# Big directories
+.vagrant
+dist
+node_modules
+
+# Virtual machines
+.vagrant
+
+# C
+*.o
+
+# node.js
+node_modules
+
+# Python
+*.pyc
+__pycache__
+
+# Elixir
+deps
+_build
 * Emacs configuration
 ** Simple require
 #+begin_src emacs-lisp
