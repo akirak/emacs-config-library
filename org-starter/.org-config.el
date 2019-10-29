@@ -43,7 +43,7 @@ Skips capture tasks, projects, and subprojects."
 
 (setq-default org-clock-in-switch-to-state #'akirak/clock-in-to-next)
 
-;;;; Org files in this repositories
+;;;; Org files in this repository
 ;;;;; yankpad.org
 (org-starter-define-file (expand-file-name "yankpad/yankpad.org" no-littering-etc-directory)
   :key "y"
