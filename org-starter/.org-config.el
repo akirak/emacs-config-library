@@ -69,6 +69,25 @@ Skips capture tasks, projects, and subprojects."
 :CREATED_TIME: %U
 :END:")
 
+;;;; Utilities for org-agenda
+(defun akirak/org-super-agenda-map-outline-path (item)
+  (let ((marker (or (get-text-property 0 'org-marker item)
+                    (get-text-property 0 'org-hd-marker item))))
+    (with-current-buffer (marker-buffer marker)
+      (save-excursion
+        (goto-char marker)
+        (org-format-outline-path
+         (org-get-outline-path nil t))))))
+
+(defun akirak/org-super-agenda-map-top-level (item)
+  (let ((marker (or (get-text-property 0 'org-marker item)
+                    (get-text-property 0 'org-hd-marker item))))
+    (with-current-buffer (marker-buffer marker)
+      (save-excursion
+        (goto-char marker)
+        (re-search-backward (rx bol "* "))
+        (nth 4 (org-heading-components))))))
+
 ;;;; Org-Capture
 ;;;;; Generic capture template
 (org-starter-def-capture "/" "Subtree in a file"
