@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: pretty-hydra-define
+# key: hydra
+# --
+(pretty-hydra-define ${1:name}
+  (:title ${2:title}
+  :quit-key ("C-g" "q"))
+  ("${2:first group}"
+   (("${3:key}" ${4:command})
+   ${0:other bindings in the first group}
+    )
+    ;; "Second group"
+    ;; (
+    ;; bindings in second group
+    ;; )
+  ))
