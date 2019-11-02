@@ -57,9 +57,7 @@ Skips capture tasks, projects, and subprojects."
     '("CREATED_TIME" "CREATED_AT" "CLOSED"))
   :local-variables
   '((org-reverse-datetree-level-formats
-     . ((lambda (time)
-          (format-time-string "%Y-%m"
-                              (org-reverse-datetree-monday time)))
+     . ((lambda (time) (format-time-string "%Y-%m"))
         "%Y-%m-%d %A"))))
 
 (org-starter-def-capture "je" "Emacs Journal"
