@@ -3,6 +3,25 @@
 #+HUGO_BASE_DIR: ~/arts/github/jingsi-space-blog/
 #+author: Akira Komamura
 * 2019-10
+** 2019-11-03 Sunday
+*** Quality Assurance of Digital Life
+:PROPERTIES:
+:CREATED_TIME: [2019-11-02 Sat 23:59]
+:END:
+
+I have created a repository for [[https://github.com/akirak/digital-life-qa][quality assurance of my digital life]].
+It is a repository for documentation on stuffs related to my digital life, and each file should correspond to one subject.
+I started this project because I have felt a need for having a consistent set of policies and it should be shared with the public, no matter how competent/incompetent I am.
+I am able to randomly implement some features, but without a set of well-organised plans, I am likely to lose sight of my picture.
+
+It currently contains only one file, [[https://github.com/akirak/digital-life-qa/blob/master/emacs.org][emacs.org]], whose contents have been migrated from one of my private Org files.
+The =emacs.org= document specifies the features of my Emacs configuration, which are not completely implemented at present. It describes what one's Emacs should be.
+It should contain BDD test cases in a form of org-babel source blocks, which should be used to test [[https://github.com/akirak/emacs.d][my Emacs configuration]].
+
+You can browse the contents on your web browser.
+Apparently, GitHub currently lacks to support for handling links to headings with statistic cookies.
+
+[[https://raw.githubusercontent.com/akirak/emacs-config-library/screenshots/github-org-links-to-headings-with-cookies-fs8.png]]
 ** 2019-10-21 Monday
 *** DONE Editing Parentheses in Emacs                        :Emacs:coding:
 CLOSED: [2019-10-21 Mon 20:22]
