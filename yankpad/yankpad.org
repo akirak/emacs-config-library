@@ -90,6 +90,16 @@ $0
 (use-package ${1:name}
   :straight (:host ${2:github} :repo "${3:repo}")
   $0)
+* Templates for FOSS projects
+** Footer for Org README
+\* COMMENT Meta                                                 :noexport:
+:PROPERTIES:
+:TOC:      ignore
+:END:
+# The COMMENT keyword prevents GitHub's renderer from showing this entry.
+# Local Variables:
+# eval: (when (require (quote org-make-toc) nil t) (org-make-toc-mode t))
+# End:
 * Vue.js
 ** Basic single-file component in Vue.js (JavaScript version)
 <template>
