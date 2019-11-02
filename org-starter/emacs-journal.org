@@ -2,7 +2,7 @@
 #+HUGO_SECTION: post
 #+HUGO_BASE_DIR: ~/arts/github/jingsi-space-blog/
 #+author: Akira Komamura
-* 2019-10
+* 2019-11
 ** 2019-11-03 Sunday
 *** Quality Assurance of Digital Life
 :PROPERTIES:
@@ -22,6 +22,7 @@ You can browse the contents on your web browser.
 Apparently, GitHub currently lacks to support for handling links to headings with statistic cookies.
 
 [[https://raw.githubusercontent.com/akirak/emacs-config-library/screenshots/github-org-links-to-headings-with-cookies-fs8.png]]
+* 2019-10
 ** 2019-10-21 Monday
 *** DONE Editing Parentheses in Emacs                        :Emacs:coding:
 CLOSED: [2019-10-21 Mon 20:22]
@@ -209,7 +210,6 @@ The following is my current setup:
                                   files
                                   bookmarks)))
 #+end_src
-
 * 2019-09
 ** 2019-09-29 Sunday
 *** Hello
