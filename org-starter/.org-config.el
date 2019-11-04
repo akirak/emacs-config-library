@@ -11,8 +11,14 @@
                  "ARCHIVED(a@/!)")
                 (sequence
                  "MAYBE(m@)"
+                 "ALTERNATIVE(L)"
                  "STOPPED(p@)"
-                 "WAITING(w@/!)")))
+                 "WAITING(w@/!)")
+                (type
+                 "REQ_SENT(S@/)"
+                 "|"
+                 "APPROVED(A!)"
+                 "REJECTED(R@/!)")))
 
 (setq-default org-todo-state-tags-triggers
               (append '(("ARCHIVED" ("ARCHIVE" . t)))))
