@@ -68,6 +68,33 @@ Skips capture tasks, projects, and subprojects."
 :END:")
 
 ;;;; Utilities for org-agenda
+(defmacro akirak/org-super-agenda-def-map-level (level)
+  `(defun ,(intern (format "akirak/org-super-agenda-map-level-%s" level)) (item)
+     (let ((marker (or (get-text-property 0 'org-marker item)
+                       (get-text-property 0 'org-hd-marker item))))
+       (with-current-buffer (marker-buffer marker)
+         (save-excursion
+           (goto-char marker)
+           (nth ,(1- level) (org-get-outline-path nil t)))))))
+
+(akirak/org-super-agenda-def-map-level 2)
+
+(defun akirak/org-super-agenda-map-outline-path-cdr (item)
+  (let ((marker (or (get-text-property 0 'org-marker item)
+                    (get-text-property 0 'org-hd-marker item))))
+    (with-current-buffer (marker-buffer marker)
+      (save-excursion
+        (goto-char marker)
+        (org-format-outline-path
+         (cdr (org-get-outline-path nil t)))))))
+
+(defun akirak/org-super-agenda-map-filenames (item)
+  (when-let* ((marker (or (get-text-property 0 'org-marker item)
+                          (get-text-property 0 'org-hd-marker item)))
+              (buffer (marker-buffer marker))
+              (filename (buffer-file-name buffer)))
+    (file-name-nondirectory filename)))
+
 (defun akirak/org-super-agenda-map-outline-path (item)
   (let ((marker (or (get-text-property 0 'org-marker item)
                     (get-text-property 0 'org-hd-marker item))))
@@ -76,6 +103,19 @@ Skips capture tasks, projects, and subprojects."
         (goto-char marker)
         (org-format-outline-path
          (org-get-outline-path nil t))))))
+
+(defun akirak/org-super-agenda-map-outline-paths-with-filenames (item)
+  (let ((marker (or (get-text-property 0 'org-marker item)
+                    (get-text-property 0 'org-hd-marker item))))
+    (with-current-buffer (marker-buffer marker)
+      (save-excursion
+        (goto-char marker)
+        (let ((filename (buffer-file-name (current-buffer)))
+              (outline (org-format-outline-path
+                        (org-get-outline-path nil t))))
+          (if filename
+              (concat (file-name-nondirectory filename) ": " outline)
+            outline))))))
 
 (defun akirak/org-super-agenda-map-top-level (item)
   (let ((marker (or (get-text-property 0 'org-marker item)
@@ -87,6 +127,15 @@ Skips capture tasks, projects, and subprojects."
         (nth 4 (org-heading-components))))))
 
 ;;;; Org-Capture
+;;;;; Utilities
+(defun akirak/org-capture-select-refile-target ()
+  (org-refile '(4)))
+
+(defun akirak/org-src-language-of-file (file)
+  (let ((buffer (find-buffer-visiting file)))
+    (string-remove-suffix
+     "-mode" (symbol-name (buffer-local-value 'major-mode buffer)))))
+
 ;;;;; Generic capture template
 (org-starter-def-capture "/" "Subtree in a file"
   entry (function (lambda () (org-refile '(4))))
