@@ -379,3 +379,20 @@ Skips capture tasks, projects, and subprojects."
                    (-sort #'string<
                           (--map (string-remove-suffix "-mode" (symbol-name it))
                                  (akirak/major-mode-list)))))
+
+;;;; Other utiltiies
+
+(defun akirak/org-sort-top-level-headings-alphabetically ()
+  (let ((start-heading (nth 4 (org-heading-components)))
+        (line (thing-at-point 'line))
+        (col (car (posn-col-row (posn-at-point (point))))))
+    (save-restriction
+      (widen)
+      (save-excursion
+        (goto-char (point-min))
+        (org-sort-entries nil ?a)))
+    (goto-char (point-min))
+    (re-search-forward (regexp-quote start-heading))
+    (beginning-of-line)
+    (re-search-forward (regexp-quote line))
+    (move-to-column col)))
