@@ -100,6 +100,19 @@ $0
 # Local Variables:
 # eval: (when (require (quote org-make-toc) nil t) (org-make-toc-mode t))
 # End:
+* Org mode configuation
+** org-starter-def-capture                                             :src:cg:
+#+begin_src emacs-lisp
+  (org-starter-def-capture "${1:key}" "${2:title}"
+    entry ${3:destination}
+    "* %^{Heading}
+  :PROPERTIES:
+  :CREATED_TIME: \\%U
+  :END:
+  %?
+  "
+    :clock-in t :clock-resume t)
+#+end_src
 * Vue.js
 ** Basic single-file component in Vue.js (JavaScript version)
 <template>
