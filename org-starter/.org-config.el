@@ -18,7 +18,11 @@
                  "REQ_SENT(S@/)"
                  "|"
                  "APPROVED(A!)"
-                 "REJECTED(R@/!)")))
+                 "REJECTED(R@/!)")
+                (sequence
+                 "HABIT(h)"
+                 "|"
+                 "HABIT_INACTIVE(i)")))
 
 (setq-default org-todo-state-tags-triggers
               (append '(("ARCHIVED" ("ARCHIVE" . t)))))
