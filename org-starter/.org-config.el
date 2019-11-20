@@ -136,6 +136,18 @@ Skips capture tasks, projects, and subprojects."
         (re-search-backward (rx bol "* "))
         (nth 4 (org-heading-components))))))
 
+(defmacro akirak/org-super-agenda-map-outline-level-between (start end)
+  `(lambda (item)
+     (let ((marker (or (get-text-property 0 'org-marker item)
+                       (get-text-property 0 'org-hd-marker item))))
+       (with-current-buffer (marker-buffer marker)
+         (save-excursion
+           (goto-char marker)
+           (org-format-outline-path
+            (thread-first (org-get-outline-path nil t)
+              (seq-drop ,(1- start))
+              (seq-take ,(1+ (- end start))))))))))
+
 ;;;; Org-Capture
 ;;;;; Utilities
 (defun akirak/org-capture-select-refile-target ()
@@ -336,3 +348,9 @@ Skips capture tasks, projects, and subprojects."
     (beginning-of-line)
     (re-search-forward (regexp-quote line))
     (move-to-column col)))
+
+(defun akirak/org-goto-custom-id (custom_id)
+  (let ((pos (org-find-property "CUSTOM_ID" custom_id)))
+    (if pos
+        (goto-char pos)
+      (user-error "custom id not found"))))
