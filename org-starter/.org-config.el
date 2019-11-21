@@ -148,6 +148,9 @@ Skips capture tasks, projects, and subprojects."
               (seq-drop ,(1- start))
               (seq-take ,(1+ (- end start))))))))))
 
+(defalias 'akirak/org-super-agenda-map-outline-paths-2-3
+  (akirak/org-super-agenda-map-outline-level-between 2 3))
+
 ;;;; Org-Capture
 ;;;;; Utilities
 (defun akirak/org-capture-select-refile-target ()
