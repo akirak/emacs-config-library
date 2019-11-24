@@ -1,3 +1,13 @@
+;;;; Settings for packages other than org-mode
+(defconst akirak/emacs-data-directory
+  (expand-file-name "../.."
+                    (or load-file-name
+                        (buffer-file-name (current-buffer)))))
+
+(setq-default abbrev-file-name (expand-file-name
+                                "abbrev/global.el"
+                                akirak/emacs-data-directory))
+
 ;;;; Todo states
 
 (setq-default org-todo-keywords
