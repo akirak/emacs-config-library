@@ -77,7 +77,11 @@
 
 (define-abbrev-table 'elm-package-mode-abbrev-table '())
 
-(define-abbrev-table 'emacs-lisp-mode-abbrev-table '())
+(define-abbrev-table 'emacs-lisp-mode-abbrev-table
+  '(
+    ("bou" "bound-and-true-p" 0 1)
+    ("deri" "derived-mode-p" 0 1)
+   ))
 
 (define-abbrev-table 'epa-info-mode-abbrev-table '())
 
