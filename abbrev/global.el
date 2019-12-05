@@ -139,6 +139,7 @@
 
 (define-abbrev-table 'global-abbrev-table
   '(
+    ("alte" "alternative" nil 0)
     ("fll" "following" nil 2)
    ))
 
