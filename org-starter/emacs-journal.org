@@ -60,7 +60,6 @@ My =use-package= configuration for =lsp-mode= is currently as follows:
   :hook
   (lsp-mode . akirak/setup-lsp)
   ((web-mode
-    vue-html-mode
     css-mode
     go-mode)
    . lsp-deferred)
@@ -70,6 +69,16 @@ My =use-package= configuration for =lsp-mode= is currently as follows:
 
 You need to call =direnv-update-environment= in your project before =lsp= is initialized.
 This can be implemented as a function advice as in the example above.
+
+The configuration for =go-mode= itself can be as easy as follows:
+
+#+begin_src emacs-lisp
+(use-package go-mode)
+#+end_src
+
+There are several extension packages such as =lsp-ui= and =lsp-treemacs=, but they are not necessary for coding.
+If you have used Emacs for coding in at least one programming language, =lsp-mode= satisfies all basic needs via =company-mode=, =eldoc-mode=, and =flycheck-mode=.
+
 With this setup, =lsp-mode= activates immediately when you open a =.go= file.
 
 I am sure this is not an ideal setup.
