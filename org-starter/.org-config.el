@@ -20,7 +20,7 @@
                  "DONE(d)"
                  "ARCHIVED(a@/!)")
                 (sequence
-                 "MAYBE(m@)"
+                 "MAYBE(m!)"
                  "ALTERNATIVE(L)"
                  "STOPPED(p@)"
                  "WAITING(w@/!)")
