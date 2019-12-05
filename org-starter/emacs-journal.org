@@ -2,6 +2,83 @@
 #+HUGO_SECTION: post
 #+HUGO_BASE_DIR: ~/arts/github/jingsi-space-blog/
 #+author: Akira Komamura
+* 2019-12
+** 2019-12-05 Thursday
+*** LSP Setup for Golang  :Emacs:lsp_mode:Golang:
+:PROPERTIES:
+:CREATED_TIME: [2019-12-05 Thu 23:48]
+:END:
+
+I've [[https://github.com/akirak/emacs.d/commit/44971f714d92359c6c79e16cf5fbc5d2675d1ae7][reconfigured]] [[https://github.com/emacs-lsp/lsp-mode][lsp-mode]].
+It works with =gopls= for Golang.
+
+To use =lsp-mode= in =go-mode=, you don't have to install =gopls= globally.
+With =direnv= and =lorri=, you can use a LSP server installed locally.
+
+First set up your project.
+Create =.envrc= 
+
+#+begin_src 
+eval "$(lorri direnv)"
+export GOPATH="YOURGOPATH"
+export PATH="$GOPATH/bin:$PATH"
+#+end_src
+
+and =shell.nix=
+
+#+begin_src nix
+let
+  pkgs = import <nixpkgs> {};
+in
+  pkgs.mkShell {
+    buildInputs = with pkgs; [
+      go
+    ];
+  }
+#+end_src
+
+Then run =direnv allow= shell command or =direnv-allow= Emacs command to activate the configuration and run the following command to install =gopls=:
+
+#+begin_src shell
+GO111MODULE=on go get golang.org/x/tools/gopls@latest
+#+end_src
+
+My =use-package= configuration for =lsp-mode= is currently as follows:
+
+#+begin_src emacs-lisp
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :config
+  (require 'lsp-clients)
+  (defun akirak/setup-lsp ()
+    (company-mode t)
+    (eldoc-mode t)
+    (flycheck-mode t))
+  ;; Update direnv to detect locally installed lsp servers
+  (advice-add 'lsp :before
+              (lambda (&rest _args) (direnv-update-environment)))
+  :hook
+  (lsp-mode . akirak/setup-lsp)
+  ((web-mode
+    vue-html-mode
+    css-mode
+    go-mode)
+   . lsp-deferred)
+  :custom
+  (lsp-eldoc-render-all t))
+#+end_src
+
+You need to call =direnv-update-environment= in your project before =lsp= is initialized.
+This can be implemented as a function advice as in the example above.
+With this setup, =lsp-mode= activates immediately when you open a =.go= file.
+
+I am sure this is not an ideal setup.
+There would be a way to install =gopls= without =GOPATH= on my home directory, but I am not used to write Nix expressions.
+This is a quick-and-dirty workaround.
+
+Nonetheless, I probably won't use Golang.
+It probably won't take a long time to get a grasp of the language, but I don't think I'll love the language.
+I have some other programming languages I would really like to learn, so I had better skip anything I am not serious about, unless someone else pays for my learning.
 * 2019-11
 ** 2019-11-03 Sunday
 *** Quality Assurance of Digital Life
