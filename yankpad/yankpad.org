@@ -25,6 +25,65 @@ cache:
     - /nix/store
     - /dev/shm/package-lint
 #+end_src
+** Nix configuration for CI
+{ pkgs ? import <nixpkgs> {},
+  emacs ? (import (builtins.fetchTarball "https://github.com/purcell/nix-emacs-ci/archive/master.tar.gz")).emacs-${1:25-1}
+}:
+let
+  check-package = import (builtins.fetchTarball "https://github.com/akirak/emacs-package-checker/archive/v1.tar.gz");
+in
+check-package {
+  inherit emacs pkgs;
+  name = "${2:name}";
+  src = ./.;
+  targetFiles = ["$2.el"];
+  emacsPackages = epkgs: (with epkgs.melpaPackages; [
+    ${3:dependencies}
+  ]);
+}
+** YAML configuration for GitHub actions
+name: lint
+
+on:
+  push:
+    paths-ignore:
+    - '**/*.md'
+    - '**/*.org'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        emacs-version:
+          - emacs-25-1
+          - emacs-25-1
+          - emacs-25-1
+          - emacs-26-1
+          - emacs-26-2
+          - emacs-26-3
+    steps:
+    - name: install nix
+      uses: cachix/install-nix-action@v5
+    - name: install cachix
+      run: nix-env -iA cachix -f https://cachix.org/api/v1/install
+    - name: enable cachix for emacs-ci
+      run: cachix use emacs-ci
+    - name: check if nix is installed
+      run: nix-env --version
+    - uses: actions/checkout@v1
+    - run: nix-channel --add https://github.com/purcell/nix-emacs-ci/archive/master.tar.gz emacs-ci
+    - run: nix-channel --update
+    - name: Run tests
+      env:
+        PACKAGE: ${{ '${1:package}' }}
+      run: |
+        set -e
+        nix-build --arg emacs "(import <emacs-ci>).${{ matrix.emacs-version }}" -A $PACKAGE.byte-compile --no-out-link --quiet ci.nix
+        nix-build --arg emacs "(import <emacs-ci>).${{ matrix.emacs-version }}" -A $PACKAGE.checkdoc --no-out-link --quiet ci.nix
+        nix-shell --arg emacs "(import <emacs-ci>).${{ matrix.emacs-version }}" -A $PACKAGE.package-lint --pure --quiet ci.nix
+** GitHub Actions badge
+[[https://github.com/akirak/${1:repo}/workflows/lint/badge.svg?branch=master][https://github.com/akirak/$1/workflows/lint/badge.svg?branch=master]]
 * Syncthing
 ** .gitignore for Syncthing repositories
 .stfolder
