@@ -80,13 +80,6 @@ Skips capture tasks, projects, and subprojects."
      . ((lambda (time) (format-time-string "%Y-%m"))
         "%Y-%m-%d %A"))))
 
-(org-starter-def-capture "je" "Emacs Journal"
-  entry (file+function "emacs-journal.org" org-reverse-datetree-goto-date-in-file)
-  "* %^{Heading}
-:PROPERTIES:
-:CREATED_TIME: %U
-:END:")
-
 ;;;; Utilities for org-agenda
 (defmacro akirak/org-super-agenda-def-map-level (level)
   `(defun ,(intern (format "akirak/org-super-agenda-map-level-%s" level)) (item)
