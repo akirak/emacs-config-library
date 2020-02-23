@@ -28,8 +28,10 @@
                  "REQ_SENT(S@/)"
                  "|"
                  "APPROVED(A!)"
-                 "REJECTED(R@/!)")
+                 "REJECTED(J@/!)")
                 (sequence
+                 "RECUR(R)"
+                 ;; Deprecated
                  "HABIT(h)"
                  "|"
                  "HABIT_INACTIVE(i)")))
