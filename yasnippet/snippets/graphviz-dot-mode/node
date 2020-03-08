@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: node
-# key: n
-# --
-${1:id} [label="${2:label}"];
