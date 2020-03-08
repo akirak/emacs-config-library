@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: Define a major-mode-hydra
-# key: mmh
-# --
-(major-mode-hydra-define '${1:mode}
-(:title "${2:title}")
-("${3:First group}"
-(${0:bindings...}
-)))

@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: jest: it (test case)
-# key: it
-# --
-it(`akirak/js-preferred-quote`${1:title}`akirak/js-preferred-quote`, $2() => {
-    $0
-})`(akirak/js-trailing-semicolon-if-desired)`

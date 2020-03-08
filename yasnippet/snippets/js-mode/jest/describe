@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: jest: describe
-# key: desc
-# --
-describe('${1:title}', () => {
-    $0
-})`(akirak/js-trailing-semicolon-if-desired)`

@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: JSDoc/TypeDoc comment
-# key: doc
-# --
-/**
- * $0
- */

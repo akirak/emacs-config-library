@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: main
-# key: main
-# --
-def main():
-    $1
-
-if __name__ == "__main__":
-    main()
